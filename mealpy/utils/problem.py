@@ -140,7 +140,7 @@ class Problem:
         if encoded:
             print(repr(bounds))
             return Problem.encode_solution_with_bounds(x, bounds)
-        print(repr(bounds))
+        print(bounds)
         return x
 
     def encode_solution(self, x: Union[List, tuple, np.ndarray]) -> np.ndarray:
