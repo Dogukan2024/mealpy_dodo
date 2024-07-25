@@ -138,7 +138,7 @@ class Problem:
     def generate_solution_with_bounds(bounds: Union[List, Tuple, np.ndarray], encoded: bool = True) -> Union[List, np.ndarray]:
         x = [var.generate() for var in bounds]
         if encoded:
-            print(repr(bounds))
+            print(bounds)
             return Problem.encode_solution_with_bounds(x, bounds)
         print(bounds)
         return x
