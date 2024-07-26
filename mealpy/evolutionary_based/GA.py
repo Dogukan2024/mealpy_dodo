@@ -294,8 +294,8 @@ class BaseGA(Optimizer):
         pop_new = []
         for i in range(0, int(self.pop_size)):
             ### Selection
-            child1 = list(np.random.randint(low = 0,high=2,size=11))
-            child2 = list(np.random.randint(low = 0,high=2,size=11))
+            child1 = list(np.random.randint(low = 0,high=2,size=12))
+            child2 = list(np.random.randint(low = 0,high=2,size=12))
 
             child1 = self.correct_solution(child1)
             child2 = self.correct_solution(child2)
