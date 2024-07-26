@@ -312,6 +312,11 @@ class BaseGA(Optimizer):
 
             pop_new.append(agent1)
             pop_new.append(agent2)
+            if self.mode not in self.AVAILABLE_MODES:
+                pop_new[-2].target = self.get_target(child1)
+                pop_new[-1].target = self.get_target(child2)
+        if self.mode in self.AVAILABLE_MODES:
+            pop_new = self.update_target_for_population(pop_new)
 
         ### Survivor Selection
         self.pop = self.survivor_process__(self.pop, pop_new)
