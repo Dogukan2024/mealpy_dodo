@@ -263,7 +263,7 @@ class Optimizer:
         self.track_optimize_process()
         return self.g_best, epoch_found_x3
 
-    def solve_multiple_times(self, problem, mode='single', n_workers=None, termination=None, starting_solutions=None, seed=None, trials=100, min_value = min_value):
+    def solve_multiple_times(self, problem, mode='single', n_workers=None, termination=None, starting_solutions=None, seed=None, trials=100, min_value = 26):
         for trial in range(trials):
             trial_seed = seed if seed is not None else int(time.time() * 1000) + trial
             g_best, epoch_found = self.solve_once(problem, mode, n_workers, termination, starting_solutions, seed, min_value = min_value)
