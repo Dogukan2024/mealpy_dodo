@@ -324,8 +324,7 @@ class BaseGA(Optimizer):
             
         ### Survivor Selection
         self.pop = self.survivor_process__(self.pop, pop_new)
-        print(self.pop)
-        print(pop_new)
+
 
 
 class SingleGA(BaseGA):
