@@ -204,7 +204,7 @@ class Optimizer:
 
     def solve_once(self, problem: Union[Dict, Problem] = None, mode: str = 'single', n_workers: int = None,
               termination: Union[Dict, Termination] = None, starting_solutions: Union[List, np.ndarray, Tuple] = None,
-              seed: int = None) -> Agent:
+              seed: int = None, min_value ) -> Agent:
         """
         Args:
             problem: an instance of Problem class or a dictionary
@@ -251,7 +251,7 @@ class Optimizer:
             #print(float(str(self.g_best).split(',')[2].split(':')[1]))
             #print(epoch)
 
-            if float(str(self.g_best).split(',')[2].split(':')[1]) <= 54:
+            if float(str(self.g_best).split(',')[2].split(':')[1]) <= min_value:
                 if epoch_found_x3 == None:
                     epoch_found_x3 = epoch
             
@@ -263,10 +263,10 @@ class Optimizer:
         self.track_optimize_process()
         return self.g_best, epoch_found_x3
 
-    def solve_multiple_times(self, problem, mode='single', n_workers=None, termination=None, starting_solutions=None, seed=None, trials=100):
+    def solve_multiple_times(self, problem, mode='single', n_workers=None, termination=None, starting_solutions=None, seed=None, trials=100, min_value = min_value):
         for trial in range(trials):
             trial_seed = seed if seed is not None else int(time.time() * 1000) + trial
-            g_best, epoch_found = self.solve_once(problem, mode, n_workers, termination, starting_solutions, seed)
+            g_best, epoch_found = self.solve_once(problem, mode, n_workers, termination, starting_solutions, seed, min_value = min_value)
             if epoch_found is None:
                 self.epoch_results.append(self.epoch + 1)
             if epoch_found is not None:
