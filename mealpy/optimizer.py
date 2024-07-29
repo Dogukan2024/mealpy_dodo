@@ -202,7 +202,7 @@ class Optimizer:
                     self.logger.warning(self.termination.message)
             return finished
 
-    def solve_once(self, min_value = min_value, problem: Union[Dict, Problem] = None, mode: str = 'single', n_workers: int = None,
+    def solve_once(self, min_value = 26, problem: Union[Dict, Problem] = None, mode: str = 'single', n_workers: int = None,
               termination: Union[Dict, Termination] = None, starting_solutions: Union[List, np.ndarray, Tuple] = None,
               seed: int = None,  ) -> Agent:
         """
