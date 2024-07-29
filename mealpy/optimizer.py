@@ -202,9 +202,9 @@ class Optimizer:
                     self.logger.warning(self.termination.message)
             return finished
 
-    def solve_once(self, problem: Union[Dict, Problem] = None, mode: str = 'single', n_workers: int = None,
+    def solve_once(self, min_value, problem: Union[Dict, Problem] = None, mode: str = 'single', n_workers: int = None,
               termination: Union[Dict, Termination] = None, starting_solutions: Union[List, np.ndarray, Tuple] = None,
-              seed: int = None, min_value = min_value) -> Agent:
+              seed: int = None, ) -> Agent:
         """
         Args:
             problem: an instance of Problem class or a dictionary
@@ -263,7 +263,7 @@ class Optimizer:
         self.track_optimize_process()
         return self.g_best, epoch_found_x3
 
-    def solve_multiple_times(self, problem, mode='single', n_workers=None, termination=None, starting_solutions=None, seed=None, trials=100, min_value= 26):
+    def solve_multiple_times(self,min_value , problem, mode='single', n_workers=None, termination=None, starting_solutions=None, seed=None, trials=100 ):
         for trial in range(trials):
             g_best, epoch_found = self.solve_once(problem, mode, n_workers, termination, starting_solutions, seed, min_value = min_value)
             if epoch_found is None:
