@@ -265,7 +265,7 @@ class Optimizer:
 
     def solve_multiple_times(self,min_value , problem, mode='single', n_workers=None, termination=None, starting_solutions=None, seed=None, trials=100 ):
         for trial in range(trials):
-            g_best, epoch_found = self.solve_once(problem, mode, n_workers, termination, starting_solutions, seed, min_value = min_value)
+            g_best, epoch_found = self.solve_once(min_value,problem, mode, n_workers, termination, starting_solutions, seed )
             if epoch_found is None:
                 self.epoch_results.append(self.epoch + 1)
             if epoch_found is not None:
