@@ -302,9 +302,13 @@ class BaseGA(Optimizer):
 
             agent1 = self.generate_empty_agent(child1)
             agent2 = self.generate_empty_agent(child2)
+            print(f'type child1: {type(child1)}')
+            print(f'repr child1: {repr(child1)}')
 
             pop_new.append(agent1)
             pop_new.append(agent2)
+            print(f'type pop_new: {type(pop_new)}')
+            print(f'repr pop_new: {repr(pop_new)}')
 
 
         ### Survivor Selection
