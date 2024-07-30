@@ -292,17 +292,10 @@ class BaseGA(Optimizer):
         """
         list_fitness = np.array([agent.target.fitness for agent in self.pop])
         pop_new = []
-        for i in range(0, int(self.pop_size/2)):
+        for i in range(0, int(self.pop_size)):
             ### Selection
-            child1, child2 = self.selection_process__(list_fitness)
-
-            ### Crossover
-            if self.generator.random() < self.pc:
-                child1, child2 = self.crossover_process__(child1, child2)
-
-            ### Mutation
-            child1 = self.mutation_process__(child1)
-            child2 = self.mutation_process__(child2)
+            child1 = list(np.random.randint(low = 0,high=2,size=16))
+            child2 = list(np.random.randint(low = 0,high=2,size=16))
 
             child1 = self.correct_solution(child1)
             child2 = self.correct_solution(child2)
@@ -312,11 +305,7 @@ class BaseGA(Optimizer):
 
             pop_new.append(agent1)
             pop_new.append(agent2)
-            if self.mode not in self.AVAILABLE_MODES:
-                pop_new[-2].target = self.get_target(child1)
-                pop_new[-1].target = self.get_target(child2)
-        if self.mode in self.AVAILABLE_MODES:
-            pop_new = self.update_target_for_population(pop_new)
+
 
         ### Survivor Selection
         self.pop = self.survivor_process__(self.pop, pop_new)
