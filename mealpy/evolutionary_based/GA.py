@@ -313,6 +313,13 @@ class BaseGA(Optimizer):
 
             pop_new.append(agent1)
             pop_new.append(agent2)
+            
+            print(f'type child1: {type(child1)}')
+            print(f'repr child1: {repr(child1)}')
+
+            
+            print(f'type pop_new: {type(pop_new)}')
+            print(f'repr pop_new: {repr(pop_new)}')
 
             if self.mode not in self.AVAILABLE_MODES:
                 pop_new[-2].target = self.get_target(child1)
@@ -321,11 +328,13 @@ class BaseGA(Optimizer):
         if self.mode in self.AVAILABLE_MODES:
             
             pop_new = self.update_target_for_population(pop_new)
+        print(f'type pop_new after target: {type(pop_new)}')
+        print(f'repr pop_new after target: {repr(pop_new)}')
+
             
         ### Survivor Selection
         self.pop = self.survivor_process__(self.pop, pop_new)
-        print(self.pop)
-        print(pop_new)
+        
 
 
 class SingleGA(BaseGA):
