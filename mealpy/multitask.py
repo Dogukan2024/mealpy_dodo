@@ -192,14 +192,14 @@ class Multitask:
                             convergence_trials[f"trial_{result['id_trial']}"] = result['convergence']
                             best_fit_trials.append(result['best_fitness'])
                             if verbose:
-                                print(f"Solving problem: {result['problem_name']} using algorithm: {optimizer.get_name()}, on the: {result['id_trial']} trial")
+                                #print(f"Solving problem: {result['problem_name']} using algorithm: {optimizer.get_name()}, on the: {result['id_trial']} trial")
                 else:
                     for idx in trial_list:
                         result = self.__run__(idx, optimizer, problem, termination=term, mode=mode)
                         convergence_trials[f"trial_{result['id_trial']}"] = result['convergence']
                         best_fit_trials.append(result['best_fitness'])
                         if verbose:
-                            print(f"Solving problem: {result['problem_name']} using algorithm: {optimizer.get_name()}, on the: {result['id_trial']} trial")
+                            #print(f"Solving problem: {result['problem_name']} using algorithm: {optimizer.get_name()}, on the: {result['id_trial']} trial")
 
                 best_fit_optimizer_results[result['problem_name']] = best_fit_trials
                 if save_convergence:
