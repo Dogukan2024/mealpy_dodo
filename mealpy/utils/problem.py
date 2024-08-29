@@ -71,17 +71,17 @@ class Problem:
                     self.obj_weights = np.array(self.obj_weights).flatten()
                     if self.n_objs != len(self.obj_weights):
                         raise ValueError(f"{self.n_objs}-objective problem, but N weights = {len(self.obj_weights)}.")
-                    self.msg = f"Solving {self.n_objs}-objective optimization problem with weights: {self.obj_weights}."
+                    #self.msg = f"Solving {self.n_objs}-objective optimization problem with weights: {self.obj_weights}."
                 else:
                     raise ValueError(f"Solving {self.n_objs}-objective optimization, need to set obj_weights list with length: {self.n_objs}")
             elif self.n_objs == 1:
                 self.obj_weights = np.ones(1)
-                self.msg = f"Solving single objective optimization problem."
+                #self.msg = f"Solving single objective optimization problem."
             else:
                 raise ValueError(f"obj_func needs to return a single value or a list of values")
         elif isinstance(result, numbers.Number):
             self.obj_weights = np.ones(1)
-            self.msg = f"Solving single objective optimization problem."
+            #self.msg = f"Solving single objective optimization problem."
         else:
             raise ValueError(f"obj_func needs to return a single value or a list of values")
 
